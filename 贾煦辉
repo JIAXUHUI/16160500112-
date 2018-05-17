@@ -1,0 +1,50 @@
+#include "LPC11xx.h"                    // Device header
+void delay(int );
+
+void delay(int i)
+{
+	int j;
+	i*=250;
+	for(j=0;j<=i;j++);
+}
+
+int main(void)
+{
+	LPC_GPIO2->DIR = 0xFF;								//��GPIO2�ĵͰ�λ���ó�����
+
+	for(;;)
+	{
+		LPC_GPIO2->DATA = ~0x01;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x02;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x04;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x08;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x10;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x20;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x40;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x80;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x40;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x20;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x10;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x08;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x04;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x02;
+		delay(5000);
+		LPC_GPIO2->DATA = ~0x01;
+		delay(5000);
+	}
+}
+
+
